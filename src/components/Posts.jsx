@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
+import { useState } from "react"
+import Post from "./Post"
 
 const email = "Sincere@april.biz"
 
-const User = () => {
+const Posts = () => {
+  // queries ----------------------------------------------
   const {
     data: user,
     isLoading: userIsLoading,
@@ -30,6 +33,9 @@ const User = () => {
     enabled: Boolean(user?.id),
   })
 
+  // local states ------------------------------------------
+  const [selectedPost, setSelectedPost] = useState(null)
+
   return (
     <div>
       {userError || postsError ? (
@@ -43,10 +49,16 @@ const User = () => {
           </h4>
           {isIdle ? null : postsIsLoading ? (
             <p>🔃Loading...🔃</p>
+          ) : selectedPost ? (
+            <Post id={selectedPost} onBack={() => setSelectedPost(null)} />
           ) : (
             <ul>
               {posts.map((post) => (
-                <li key={post.id}>{post.title}</li>
+                <li key={post.id}>
+                  <a href="#" onClick={() => setSelectedPost(post.id)}>
+                    {post.title}
+                  </a>
+                </li>
               ))}
             </ul>
           )}
@@ -56,4 +68,4 @@ const User = () => {
   )
 }
 
-export default User
+export default Posts

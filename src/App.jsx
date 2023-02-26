@@ -2,11 +2,11 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { useState } from "react"
 import "./App.css"
 import Characters from "./components/Characters.jsx"
-import User from "./components/User"
+import Posts from "./components/Posts"
 
 const modules = [
   {
-    label: "Intro & Search",
+    label: "Customizations & Search",
     content: (
       <div>
         <h2>💫Star Wars💫</h2>
@@ -19,7 +19,7 @@ const modules = [
     content: (
       <div>
         <h2>✍️ Blog Posts ✍️</h2>
-        <User />
+        <Posts />
       </div>
     ),
   },
