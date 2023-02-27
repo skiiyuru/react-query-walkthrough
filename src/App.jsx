@@ -1,8 +1,10 @@
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { useState } from "react"
 import "./App.css"
+import Animation from "./components/Animation"
 import Characters from "./components/Characters.jsx"
 import Posts from "./components/Posts"
+import Summary from "./components/summary"
 
 const modules = [
   {
@@ -30,6 +32,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Animation />
       <h1>⚡React Query Modules⚡</h1>
       <div
         style={{
@@ -47,6 +50,7 @@ const App = () => {
       <hr />
       {modules[currentPage].content}
       <ReactQueryDevtools initialIsOpen />
+      {/* <Summary /> */}
     </div>
   )
 }
